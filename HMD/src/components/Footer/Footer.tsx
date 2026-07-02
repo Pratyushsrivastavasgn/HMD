@@ -1,28 +1,40 @@
 import React from 'react';
 
+interface FooterProps {
+  onNavigate: (page: 'home' | 'about' | 'contact') => void;
+}
+
 const footerColumns = [
   {
     title: "Services",
-    items: ["Bulk selling", "Import", "Retail"],
+    items: [
+      { label: "Bulk selling", page: 'home' as const },
+      { label: "Import", page: 'home' as const },
+      { label: "Retail", page: 'home' as const }
+    ],
   },
   {
     title: "Contact us",
-    items: ["Warranty Registration", "Contact", "Blogs"],
+    items: [
+      { label: "Warranty Registration", page: 'home' as const },
+      { label: "Contact", page: 'contact' as const },
+      { label: "Blogs", page: 'home' as const }
+    ],
   },
   {
     title: "Support",
     items: [
-      "Terms & Conditions",
-      "Privacy Policy",
-      "FAQs",
-      "Returns & Refunds Policy",
-      "Shipping Policy",
-      "About HMD",
+      { label: "Terms & Conditions", page: 'home' as const },
+      { label: "Privacy Policy", page: 'home' as const },
+      { label: "FAQs", page: 'home' as const },
+      { label: "Returns & Refunds Policy", page: 'home' as const },
+      { label: "Shipping Policy", page: 'home' as const },
+      { label: "About HMD", page: 'about' as const },
     ],
   }
 ];
 
-export const Footer: React.FC = () => {
+export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="w-full bg-white pt-16 pb-24 border-t border-gray-100 mt-24">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center">
@@ -39,7 +51,10 @@ export const Footer: React.FC = () => {
           
           {/* Brand & Contact Info */}
           <div className="flex flex-col gap-6">
-            <div className="flex flex-col">
+            <div 
+              className="flex flex-col cursor-pointer select-none"
+              onClick={() => onNavigate('home')}
+            >
               <span className="font-serif text-5xl font-bold tracking-tight uppercase leading-none text-gray-900">HMD</span>
               <span className="font-sans text-sm tracking-[0.2em] text-gray-500 uppercase mt-2">PROFESSIONAL</span>
             </div>
@@ -58,9 +73,12 @@ export const Footer: React.FC = () => {
               <ul className="flex flex-col gap-4">
                 {col.items.map((item, itemIdx) => (
                   <li key={itemIdx}>
-                    <a href="#" className="text-gray-600 font-light hover:text-gray-900 transition-colors">
-                      {item}
-                    </a>
+                    <button 
+                      onClick={() => onNavigate(item.page)}
+                      className="text-gray-600 font-light hover:text-gray-900 transition-colors text-left"
+                    >
+                      {item.label}
+                    </button>
                   </li>
                 ))}
               </ul>

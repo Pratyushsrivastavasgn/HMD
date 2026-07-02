@@ -1,6 +1,11 @@
 import React from 'react';
 import { Search, Heart, User, ShoppingCart, ChevronDown } from 'lucide-react';
 
+interface HeaderProps {
+  activePage: 'home' | 'about' | 'contact';
+  onNavigate: (page: 'home' | 'about' | 'contact') => void;
+}
+
 const navItems = [
   { label: "SERVICES", hasDropdown: true },
   { label: "ABOUT US", hasDropdown: false },
@@ -8,12 +13,15 @@ const navItems = [
   { label: "CONTACT US", hasDropdown: false }
 ];
 
-export const Header: React.FC = () => {
+export const Header: React.FC<HeaderProps> = ({ activePage, onNavigate }) => {
   return (
     <header className="sticky top-0 z-50 w-full bg-white shadow-sm px-6 py-4 flex items-center justify-between border-b border-gray-100">
       {/* Logo */}
-      <div className="flex flex-col">
-        <span className="font-serif text-3xl font-bold tracking-tight uppercase leading-none">HMD</span>
+      <div 
+        className="flex flex-col cursor-pointer select-none"
+        onClick={() => onNavigate('home')}
+      >
+        <span className="font-serif text-3xl font-bold tracking-tight uppercase leading-none text-gray-900">HMD</span>
         <span className="font-sans text-[10px] tracking-[0.2em] text-gray-500 uppercase mt-1">PROFESSIONAL</span>
       </div>
 
@@ -22,6 +30,11 @@ export const Header: React.FC = () => {
         {navItems.map((item) => (
           <button
             key={item.label}
+            onClick={() => {
+              if (item.label === 'ABOUT US') onNavigate('about');
+              else if (item.label === 'CONTACT US') onNavigate('contact');
+              else onNavigate('home');
+            }}
             className="flex items-center gap-1 text-sm font-bold text-gray-900 hover:text-gray-600 transition-colors"
           >
             {item.label}
