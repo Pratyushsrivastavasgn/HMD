@@ -2,7 +2,6 @@ import React from 'react';
 import { Search, Heart, User, ShoppingCart, ChevronDown } from 'lucide-react';
 
 interface HeaderProps {
-  activePage: 'home' | 'about' | 'contact';
   onNavigate: (page: 'home' | 'about' | 'contact') => void;
 }
 
@@ -13,7 +12,7 @@ const navItems = [
   { label: "CONTACT US", hasDropdown: false }
 ];
 
-export const Header: React.FC<HeaderProps> = ({ activePage, onNavigate }) => {
+export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
   return (
     <header className="sticky top-0 z-50 w-full bg-white shadow-sm px-6 py-4 flex items-center justify-between border-b border-gray-100">
       {/* Logo */}

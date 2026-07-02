@@ -58,7 +58,7 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900 overflow-x-hidden flex flex-col">
-      <Header activePage={activePage} onNavigate={setActivePage} />
+      <Header onNavigate={setActivePage} />
       <AnnouncementBar />
       
       <main className="flex-1 w-full flex flex-col">
