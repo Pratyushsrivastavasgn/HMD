@@ -1,11 +1,14 @@
 import React from 'react';
-import { PlaceholderImage } from '../Shared/PlaceholderImage';
+import combImg from '../../assets/comb illustration.png';
+import scissorImg from '../../assets/scissor illustration.png';
+import brushImg from '../../assets/brush illustration.png';
+import machineImg from '../../assets/machine illustration.png';
 
 const categories = [
-  { label: "Comb" },
-  { label: "Scissors" },
-  { label: "Brushes" },
-  { label: "Machines" }
+  { label: "Comb", img: combImg },
+  { label: "Scissors", img: scissorImg },
+  { label: "Brushes", img: brushImg },
+  { label: "Machines", img: machineImg }
 ];
 
 export const Categories: React.FC = () => {
@@ -18,10 +21,11 @@ export const Categories: React.FC = () => {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-16 w-full">
         {categories.map((cat) => (
           <div key={cat.label} className="flex flex-col items-center gap-6">
-            <div className="w-full aspect-[2/3] max-w-[280px] rounded-[100px] border border-gray-200 overflow-hidden bg-gray-50 flex items-center justify-center p-8 shadow-sm hover:shadow-md transition-shadow">
-              <PlaceholderImage 
-                alt={`${cat.label} icon`} 
-                className="w-full h-full !bg-transparent text-gray-400"
+            <div className="w-full aspect-[2/3] max-w-[280px] rounded-[100px] border border-gray-200 overflow-hidden bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer flex items-center justify-center">
+              <img 
+                src={cat.img}
+                alt={`${cat.label} category`} 
+                className="w-[90%] h-[90%] object-contain group-hover:scale-105 transition-transform duration-700 ease-out"
               />
             </div>
             <span className="font-sacramento text-5xl text-gray-900">
@@ -33,3 +37,4 @@ export const Categories: React.FC = () => {
     </section>
   );
 };
+
