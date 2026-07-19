@@ -47,7 +47,7 @@ export const Bestsellers: React.FC = () => {
               {item.desc}
             </p>
             
-            <button className="bg-gray-300/50 hover:bg-gray-300 text-gray-900 font-semibold py-4 px-12 rounded-full w-4/5 transition-colors">
+            <button onClick={() => window.open('https://www.google.com', '_blank', 'noopener,noreferrer')} className="bg-gray-300/50 hover:bg-gray-300 text-gray-900 font-semibold py-4 px-12 rounded-full w-4/5 transition-colors">
               Shop Now
             </button>
           </div>

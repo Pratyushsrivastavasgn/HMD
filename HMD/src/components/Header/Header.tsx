@@ -32,7 +32,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
             onClick={() => {
               if (item.label === 'ABOUT US') onNavigate('about');
               else if (item.label === 'CONTACT US') onNavigate('contact');
-              else onNavigate('home');
+              else window.open('https://www.google.com', '_blank', 'noopener,noreferrer');
             }}
             className="flex items-center gap-1 text-sm font-bold text-gray-900 hover:text-gray-600 transition-colors"
           >
@@ -44,16 +44,16 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
 
       {/* Action Icons */}
       <div className="flex items-center gap-6">
-        <button className="text-gray-900 hover:text-gray-600 transition-colors">
+        <button onClick={() => window.open('https://www.google.com', '_blank', 'noopener,noreferrer')} className="text-gray-900 hover:text-gray-600 transition-colors">
           <Search className="w-5 h-5" />
         </button>
-        <button className="text-gray-900 hover:text-gray-600 transition-colors">
+        <button onClick={() => window.open('https://www.google.com', '_blank', 'noopener,noreferrer')} className="text-gray-900 hover:text-gray-600 transition-colors">
           <Heart className="w-5 h-5" />
         </button>
-        <button className="text-gray-900 hover:text-gray-600 transition-colors">
+        <button onClick={() => window.open('https://www.google.com', '_blank', 'noopener,noreferrer')} className="text-gray-900 hover:text-gray-600 transition-colors">
           <User className="w-5 h-5" />
         </button>
-        <button className="text-gray-900 hover:text-gray-600 transition-colors relative">
+        <button onClick={() => window.open('https://www.google.com', '_blank', 'noopener,noreferrer')} className="text-gray-900 hover:text-gray-600 transition-colors relative">
           <ShoppingCart className="w-5 h-5" />
         </button>
       </div>

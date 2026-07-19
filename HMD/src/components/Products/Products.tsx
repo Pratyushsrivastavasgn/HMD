@@ -21,7 +21,9 @@ export const Products: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
         {productsList.map((item, index) => (
           <a 
-            href="#" 
+            href="https://www.google.com"
+            target="_blank"
+            rel="noopener noreferrer"
             key={index} 
             className="group block aspect-square w-full rounded-[40px] overflow-hidden shadow-lg hover:shadow-2xl border border-gray-100 transform hover:-translate-y-2 transition-all duration-300 bg-white"
           >

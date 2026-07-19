@@ -8,27 +8,27 @@ const footerColumns = [
   {
     title: "Services",
     items: [
-      { label: "Bulk selling", page: 'home' as const },
-      { label: "Import", page: 'home' as const },
-      { label: "Retail", page: 'home' as const }
+      { label: "Bulk selling", external: true },
+      { label: "Import", external: true },
+      { label: "Retail", external: true }
     ],
   },
   {
     title: "Contact us",
     items: [
-      { label: "Warranty Registration", page: 'home' as const },
+      { label: "Warranty Registration", external: true },
       { label: "Contact", page: 'contact' as const },
-      { label: "Blogs", page: 'home' as const }
+      { label: "Blogs", external: true }
     ],
   },
   {
     title: "Support",
     items: [
-      { label: "Terms & Conditions", page: 'home' as const },
-      { label: "Privacy Policy", page: 'home' as const },
-      { label: "FAQs", page: 'home' as const },
-      { label: "Returns & Refunds Policy", page: 'home' as const },
-      { label: "Shipping Policy", page: 'home' as const },
+      { label: "Terms & Conditions", external: true },
+      { label: "Privacy Policy", external: true },
+      { label: "FAQs", external: true },
+      { label: "Returns & Refunds Policy", external: true },
+      { label: "Shipping Policy", external: true },
       { label: "About HMD", page: 'about' as const },
     ],
   }
@@ -74,7 +74,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 {col.items.map((item, itemIdx) => (
                   <li key={itemIdx}>
                     <button 
-                      onClick={() => onNavigate(item.page)}
+                      onClick={() => {
+                        if ((item as any).external) {
+                          window.open('https://www.google.com', '_blank', 'noopener,noreferrer');
+                        } else if ((item as any).page) {
+                          onNavigate((item as any).page);
+                        }
+                      }}
                       className="text-gray-600 font-light hover:text-gray-900 transition-colors text-left"
                     >
                       {item.label}

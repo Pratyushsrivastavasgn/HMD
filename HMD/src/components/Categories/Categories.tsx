@@ -20,18 +20,24 @@ export const Categories: React.FC = () => {
       
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-16 w-full">
         {categories.map((cat) => (
-          <div key={cat.label} className="flex flex-col items-center gap-6">
-            <div className="w-full aspect-[2/3] max-w-[280px] rounded-[100px] border border-gray-200 overflow-hidden bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer flex items-center justify-center">
+          <a
+            key={cat.label}
+            href="https://www.google.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center gap-6 group"
+          >
+            <div className="w-full aspect-[2/3] max-w-[280px] rounded-[100px] border border-gray-200 overflow-hidden bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer flex items-center justify-center">
               <img 
                 src={cat.img}
                 alt={`${cat.label} category`} 
                 className="w-[90%] h-[90%] object-contain group-hover:scale-105 transition-transform duration-700 ease-out"
               />
             </div>
-            <span className="font-sacramento text-5xl text-gray-900">
+            <span className="font-sacramento text-5xl text-gray-900 group-hover:text-gray-600 transition-colors duration-200">
               {cat.label}
             </span>
-          </div>
+          </a>
         ))}
       </div>
     </section>
